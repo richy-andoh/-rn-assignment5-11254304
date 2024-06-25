@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -7,11 +7,13 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 //import MasterCard from '../components/MasterCard';
 import TransactionItem from '../components/TransactionItem';
 import card from "../assets/Card.png";
+import { ThemeContext } from '../context/ThemeContext';
 
 
 const HomeScreen = () => {
+    const { isEnabled } = useContext(ThemeContext);
     return (
-        <ScrollView>
+        <ScrollView style={isEnabled && styles.darkContainer}>
             <SafeAreaView style={styles.container}>
                 <View>
                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
@@ -83,6 +85,11 @@ const styles = StyleSheet.create({
         padding: 20,
         marginVertical: 10
     },
+
+    darkContainer: {
+        backgroundColor: 'black',
+    },
+
     welcome: {
         fontSize: 17,
         opacity: 0.6,

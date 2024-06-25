@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -9,12 +9,14 @@ import SettingsScreen from './screens/SettingsScreen';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MyCards from './screens/MyCards';
 import Statistics from './screens/Statistics';
+import { ThemeProvider } from './context/ThemeContext';
 
 export default function App() {
 
   const Tab = createBottomTabNavigator();
   return (
-      <NavigationContainer>
+      <ThemeProvider>
+        <NavigationContainer>
         <SafeAreaProvider>
           <Tab.Navigator
 
@@ -60,6 +62,7 @@ export default function App() {
           </Tab.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
+      </ThemeProvider>
   );
 }
 
