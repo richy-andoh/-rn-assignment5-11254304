@@ -45,7 +45,7 @@ export default MasterCard;
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#3b3b3b',
-        width: 350,
+        width: 320,
         borderRadius: 30,
         paddingHorizontal: 20,
         paddingVertical: 10,
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
         elevation: 5,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginTop: 30
     },
     icon: {
         alignSelf: 'flex-end',

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,58 +14,58 @@ export default function App() {
 
   const Tab = createBottomTabNavigator();
   return (
-    <NavigationContainer>
-      <SafeAreaProvider>
-        <Tab.Navigator
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <Tab.Navigator
 
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
 
-              if (route.name === 'Home') {
-                iconName = focused
-                  ? 'home'
-                  : 'home';
-              } else if (route.name === 'Settings') {
-                iconName = focused ? 'settings' : 'settings';
-              } else if (route.name === 'My Cards') {
-                iconName = focused ? 'card' : 'card';
-              }
+                if (route.name === 'Home') {
+                  iconName = focused
+                    ? 'home'
+                    : 'home';
+                } else if (route.name === 'Settings') {
+                  iconName = focused ? 'settings' : 'settings';
+                } else if (route.name === 'My Cards') {
+                  iconName = focused ? 'card' : 'card';
+                }
 
-              else if (route.name === 'Statistics') {
-                iconName = focused ? 'stats-chart' : 'stats-chart';
-              }
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: 'tomato',
-            tabBarInactiveTintColor: 'gray',
-          })}
+                else if (route.name === 'Statistics') {
+                  iconName = focused ? 'stats-chart' : 'stats-chart';
+                }
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: 'tomato',
+              tabBarInactiveTintColor: 'gray',
+            })}
 
-          initialRouteName='Home'>
-          <Tab.Screen name="Home" component={HomeScreen} options={{
-            headerShown: false
-          }} />
-          <Tab.Screen name="My Cards" component={MyCards} options={{
-            headerShown: false
-          }} />
-          <Tab.Screen name="Statistics" component={Statistics} options={{
-            headerShown: false
-          }} />
-          <Tab.Screen name="Settings" component={SettingsScreen}
-            options={{
+            initialRouteName='Home'>
+            <Tab.Screen name="Home" component={HomeScreen} options={{
               headerShown: false
-            }}
-          />
-        </Tab.Navigator>
-      </SafeAreaProvider>
-    </NavigationContainer>
+            }} />
+            <Tab.Screen name="My Cards" component={MyCards} options={{
+              headerShown: false
+            }} />
+            <Tab.Screen name="Statistics" component={Statistics} options={{
+              headerShown: false
+            }} />
+            <Tab.Screen name="Settings" component={SettingsScreen}
+              options={{
+                headerShown: false
+              }}
+            />
+          </Tab.Navigator>
+        </SafeAreaProvider>
+      </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
 });
