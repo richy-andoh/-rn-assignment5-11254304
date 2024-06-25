@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
-import MasterCard from '../components/MasterCard';
+//import MasterCard from '../components/MasterCard';
 import TransactionItem from '../components/TransactionItem';
+import card from "../assets/Card.png";
 
 
 const HomeScreen = () => {
@@ -28,14 +29,10 @@ const HomeScreen = () => {
                         </View>
                     </View>
 
-                    {/* <View style={styles.card}>
-                    <Text style={styles.cardNumber}>4562 1122 4595 7852</Text>
-                    <Text>AR Jonson</Text>
-                    <Text>Expiry Date: 24/20</Text>
-                    <Text>CVV: 698</Text>
-                    <Text>Mastercard</Text>
-                </View> */}
-                    <MasterCard />
+
+                    <View style={{ marginTop: 30}}>
+                        <Image source={card} />
+                    </View>
 
 
                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignContent: "center", marginVertical: 40 }}>
@@ -66,20 +63,7 @@ const HomeScreen = () => {
                     </View>
 
 
-                    {/* <TouchableOpacity>
-                <FlatList
-                  data={transactions}
-                  keyExtractor={item => item.id}
-                  renderItem={({ item }) => (
-                    <TransactionItem
-                      description={item.description}
-                      subDescription={item.subDescription}
-                      amount={item.amount}
-                      icons={item.icon}
-                    />
-                  )}
-                />
-              </TouchableOpacity> */}
+                   
                     <View>
                         <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginVertical: 20 }}>
                             <Text>Transactions</Text>

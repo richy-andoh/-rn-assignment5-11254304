@@ -1,17 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SettingsScreen = ({ isDarkMode, toggleTheme }) => {
+  const settingsOptions = [
+    'Language',
+    'My Profile',
+    'Contact Us',
+    'Change Password',
+    'Privacy Policy',
+  ];
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
-      <Text style={styles.option}>Language</Text>
-      <Text style={styles.option}>My Profile</Text>
-      <Text style={styles.option}>Contact Us</Text>
-      <Text style={styles.option}>Change Password</Text>
-      <Text style={styles.option}>Privacy Policy</Text>
+      {settingsOptions.map((option, index) => (
+        <View key={index}>
+          <View style={styles.optionRow}>
+            <Text style={styles.optionText}>{option}</Text>
+            <Ionicons name="chevron-forward-outline" size={20} color="#000" />
+          </View>
+          <View style={styles.divider} />
+        </View>
+      ))}
       <View style={styles.themeOption}>
-        <Text style={styles.option}>Theme</Text>
+        <Text style={styles.optionText}>Theme</Text>
         <Switch value={isDarkMode} onValueChange={toggleTheme} />
       </View>
     </View>
@@ -26,15 +39,29 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 30,
+    textAlign: "center",
+    marginTop: 20
   },
-  option: {
+  optionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  optionText: {
     fontSize: 18,
-    marginVertical: 10,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#e0e0e0',
+    marginVertical: 5,
   },
   themeOption: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: 10,
   },
 });
 

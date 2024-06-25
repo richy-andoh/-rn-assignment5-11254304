@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 //import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome6 from "react-native-vector-icons/FontAwesome6"
+//import FontAwesome6 from "react-native-vector-icons/FontAwesome6"
 import apple from "../assets/apple.png"
-import glocery from "../assets/glocery.png";
+import grocery from "../assets/grocery.png";
+import spotify from "../assets/spotify.png"
 
 
 const transactions = [
     { id: '3', description: 'Apple Store', subDescription: 'Entertainment', icon: apple, amount: '- $12.99' },
     { id: '4', description: 'Spotify', subDescription: 'Music', icon: "", amount: '- $5.99' },
-    { id: '1', description: 'Money Transfer', subDescription: 'Bank of America', icon: "", amount: '- $88' },
-    { id: '2', description: 'Grocery Shopping', subDescription: 'Walmart', icon: "", amount: '- $5.99' },
+    { id: '2', description: 'Grocery', subDescription: 'Walmart', icon: grocery, amount: '- $5.99' },
+    { id: '1', description: 'Money Transfer', subDescription: 'Transaction', icon: "", amount: '- $88' },
     { id: '5', description: 'Amazon', subDescription: 'Online Shopping', icon: "", amount: '- $99.99' },
     { id: '6', description: 'Starbucks', subDescription: 'Coffee', icon: "", amount: '- $4.50' },
     { id: '7', description: 'Uber', subDescription: 'Ride', icon: "", amount: '- $15.00' },
@@ -25,7 +26,7 @@ const TransactionItem = ({ description, subDescription, amount, icon }) => {
             <View style={styles.transactionItem}>
 
                 <View style={{ height: 60, width: 60, backgroundColor: "#ddd", borderRadius: 50, padding: 15, marginRight: 10 }}>
-                    <FontAwesome6 name={icon} size={30} color="#000" style={styles.icon} />
+                    <Image source={icon} />
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.description}>{description}</Text>
