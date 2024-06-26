@@ -1,74 +1,75 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { NavigationContainer} from '@react-navigation/native';
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import MyCards from './screens/MyCards';
 import Statistics from './screens/Statistics';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, ThemeContext } from './context/ThemeContext';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
 
-  const Tab = createBottomTabNavigator();
-  return (
-      <ThemeProvider>
-        <NavigationContainer>
-        <SafeAreaProvider>
-          <Tab.Navigator
+const App = () => {
+    return (
+        <ThemeProvider>
+            <NavigationContainer>
+                <SafeAreaProvider>
+                    <MainNavigator />
+                </SafeAreaProvider>
+            </NavigationContainer>
+        </ThemeProvider>
+    );
+};
 
+const MainNavigator = () => {
+    const { theme } = useContext(ThemeContext);
+
+    return (
+        <Tab.Navigator
             screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
+                tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
 
-                if (route.name === 'Home') {
-                  iconName = focused
-                    ? 'home'
-                    : 'home';
-                } else if (route.name === 'Settings') {
-                  iconName = focused ? 'settings' : 'settings';
-                } else if (route.name === 'My Cards') {
-                  iconName = focused ? 'card' : 'card';
-                }
+                    if (route.name === 'Home') {
+                        iconName = focused ? 'home' : 'home-outline';
+                    } else if (route.name === 'Settings') {
+                        iconName = focused ? 'settings' : 'settings-outline';
+                    } else if (route.name === 'My Cards') {
+                        iconName = focused ? 'card' : 'card-outline';
+                    } else if (route.name === 'Statistics') {
+                        iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+                    }
 
-                else if (route.name === 'Statistics') {
-                  iconName = focused ? 'stats-chart' : 'stats-chart';
-                }
-                // You can return any component that you like here!
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: 'black',
+                tabBarInactiveTintColor: theme.tabBarIconColor,
+                tabBarStyle: { backgroundColor: theme.tabBarColor },
+                headerStyle: { backgroundColor: theme.backgroundColor, paddingVertical: theme.paddingVertical },
+                headerTitleStyle: { color: theme.textColor },
+                tabBarLabelStyle: { color: theme.textColor },
             })}
+            initialRouteName='Home'
+        >
+            <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="My Cards" component={MyCards} options={{ headerShown: false }} />
+            <Tab.Screen name="Statistics" component={Statistics} options={{ headerShown: false }} />
+            <Tab.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+        </Tab.Navigator>
+    );
+};
 
-            initialRouteName='Home'>
-            <Tab.Screen name="Home" component={HomeScreen} options={{
-              headerShown: false
-            }} />
-            <Tab.Screen name="My Cards" component={MyCards} options={{
-              headerShown: false
-            }} />
-            <Tab.Screen name="Statistics" component={Statistics} options={{
-              headerShown: false
-            }} />
-            <Tab.Screen name="Settings" component={SettingsScreen}
-              options={{
-                headerShown: false
-              }}
-            />
-          </Tab.Navigator>
-        </SafeAreaProvider>
-      </NavigationContainer>
-      </ThemeProvider>
-  );
-}
+export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
 });

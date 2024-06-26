@@ -5,7 +5,7 @@ import { ThemeContext } from '../context/ThemeContext';
 
 const SettingsScreen = () => {
 
-    const { isEnabled, toggleSwitch } = useContext(ThemeContext);
+    const {theme, isEnabled, toggleSwitch } = useContext(ThemeContext);
    
     const settingsOptions = [
         'Language',
@@ -16,13 +16,13 @@ const SettingsScreen = () => {
     ];
 
     return (
-        <View style={[styles.container, isEnabled && styles.darkTheme]}>
+        <View style={[styles.container, { backgroundColor: theme?.backgroundColor ?? 'white' }]}>
             <Text style={[styles.title, isEnabled && styles.darkText]}>Settings</Text>
             {settingsOptions.map((option, index) => (
                 <View key={index}>
                     <View style={styles.optionRow}>
                         <Text style={[styles.optionText, isEnabled && styles.darkText]}>{option}</Text>
-                        <Ionicons name="chevron-forward-outline" size={20} color="#000" style={isEnabled && styles.darkText} />
+                        <Ionicons name="chevron-forward-outline" size={20} color="#000" style={ isEnabled && styles.darkText }  />
                     </View>
                     <View style={styles.divider} />
                 </View>
@@ -51,15 +51,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+        backgroundColor: "white"
     },
-    darkText: {
-        color: '#fff',
-      },
+    // darkText: {
+    //     color: '#fff',
+    //   },
 
-    darkTheme: {
-        backgroundColor: 'black',
-        color: "white"
-    },
+    // darkTheme: {
+    //     backgroundColor: 'black',
+    //     color: "white"
+    // },
 
     title: {
         fontSize: 24,
@@ -75,13 +76,13 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     optionText: {
-        fontSize: 20,
+        fontSize: 25,
         marginTop: 10
     },
     divider: {
-        height: 1,
-        backgroundColor: '#e0e0e0',
-        marginVertical: 5,
+        height: 0.1,
+        backgroundColor: 'gray',
+        marginVertical: 10,
     },
     themeOption: {
         flexDirection: 'row',
@@ -90,6 +91,10 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         marginTop: 20
     },
+
+    darkText: {
+        color: "white"
+    }
 });
 
 export default SettingsScreen;
