@@ -82,11 +82,11 @@ npm start
 
 ### HomeScreen Light Mode
 
-![Home Screen](/assets/screen14.png)
+![Home Screen](/assets/screen11.png)
 
 ### HomeScreen Dark Mode
 
-![](/assets//screen11.png)
+![](/assets//screen14.png)
 
 ### Settings Screen Light mode
 
@@ -95,29 +95,6 @@ npm start
 ### Settings Screen Dark Mode
 
 ![](/assets/screen13.png)
-
-
-.
-├── App.js
-├── assets
-│   ├── apple.png
-│   ├── grocery.png
-│   ├── spotify.png
-│   └── ...
-├── components
-│   ├
-│   ├── MyCards.js
-│   ├── Statistics.js
-│   ├── SettingsScreen.js
-│   └── ...
-├── context
-│   └── ThemeContext.js
-├── screenshots
-│   ├── home_screen_light.png
-│   ├── home_screen_dark.png
-│   ├── settings_screen_light.png
-│   └── settings_screen_dark.png
-└── ...
 
 
 ### Contributing
@@ -146,7 +123,3 @@ git push origin feature-name
 ```
 
 5. Create a pull request
-
-
-### License
-This project is licensed under the MIT License - see the LICENSE file for details.
